@@ -14,7 +14,8 @@ module.exports = {
         let newUserArr = await db.create_user({username: username, password:hash});
         // req.session.user = {
         //     id: newUserArr[0].id, 
-        //     username: newUserArr[0].username
+        //     username: newUserArr[0].username,
+        //     profile_pic: newUserArr[0].profile_pic
         // }
         res.status(200).send({message: 'logged in', userData: newUserArr, loggedIn: true})
     },
@@ -30,7 +31,8 @@ module.exports = {
         if(!result) {
             return res.status(401).send({message: 'Password Incorrect.'})
         }
-        // req.session.user = {id: accountArr[0].acc_id, email: accountArr[0].acc_email}
+        // req.session.user = {id: userArr[0].acc_id, username: userArr[0].username, profile_pic: userArr[0].profile_pic}
+        // console.log(req.session)
         res.status(200).send({message: 'logged in', userData: userArr, loggedIn: true})
     },
 }
